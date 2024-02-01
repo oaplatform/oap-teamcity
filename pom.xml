@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>oap</groupId>
+        <artifactId>oap.maven</artifactId>
+        <version>21.0.0</version>
+    </parent>
+
+    <packaging>pom</packaging>
+    <artifactId>oap-teamcity-parent</artifactId>
+    <version>${oap-teamcity.project.version}</version>
+
+    <name>oap</name>
+
+    <modules>
+        <module>oap-teamcity</module>
+        <module>oap-teamcity-testng</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>oap</id>
+            <url>https://artifacts.oaplatform.org/repository/maven/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <oap-teamcity.project.version>21.0.0</oap-teamcity.project.version>
+
+        <oap.deps.guava.version>3.0.3</oap.deps.guava.version>
+        <oap.deps.testng.version>7.9.0</oap.deps.testng.version>
+        <oap.deps.lombok.version>1.18.30</oap.deps.lombok.version>
+    </properties>
+</project>
