@@ -1,8 +1,6 @@
 package oap.teamcity.testng;
 
 import oap.teamcity.Teamcity;
-import org.testng.ISuite;
-import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.internal.IResultListener;
@@ -50,23 +48,15 @@ public class TeamcityTestNGListener implements IResultListener {
 
     @Override
     public void onStart( ITestContext context ) {
-        System.out.println(context.getOutputDirectory());
+        System.out.println( context.getOutputDirectory() );
+        Teamcity.testSuiteStarted( getSuiteNameFromOutputDirectory( context.getOutputDirectory() ) );
         throw new RuntimeException();
     }
 
     @Override
     public void onFinish( ITestContext context ) {
-        System.out.println(context.getOutputDirectory());
+        System.out.println( context.getOutputDirectory() );
+        Teamcity.testSuiteFinished( getSuiteNameFromOutputDirectory( context.getOutputDirectory() ) );
         throw new RuntimeException();
     }
-
-//    @Override
-//    public void onStart( ISuite suite ) {
-//        Teamcity.testSuiteStarted( getSuiteNameFromOutputDirectory( suite.getOutputDirectory() ) );
-//    }
-//
-//    @Override
-//    public void onFinish( ISuite suite ) {
-//        Teamcity.testSuiteFinished( getSuiteNameFromOutputDirectory( suite.getOutputDirectory() ) );
-//    }
 }
