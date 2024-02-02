@@ -157,7 +157,7 @@ public class Teamcity {
     public static void testSuiteStarted( String suiteName ) {
         try {
             if( isTeamcity() ) {
-                System.out.format( "##teamcity[testSuiteStarted name='%s']\n", escape( suiteName ) );
+//                System.out.format( "##teamcity[testSuiteStarted name='%s']\n", escape( suiteName ) );
             }
         } catch( Throwable t ) {
             t.printStackTrace();
@@ -168,7 +168,7 @@ public class Teamcity {
 
     public static void testSuiteFinished( String suiteName ) {
         if( isTeamcity() ) {
-            System.out.format( "##teamcity[testSuiteFinished name='%s']\n", escape( suiteName ) );
+//            System.out.format( "##teamcity[testSuiteFinished name='%s']\n", escape( suiteName ) );
         }
     }
 
