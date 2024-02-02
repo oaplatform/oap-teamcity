@@ -157,7 +157,6 @@ public class Teamcity {
     public static void testSuiteStarted( String suiteName ) {
         try {
             if( isTeamcity() ) {
-                System.out.format( "-##teamcity[testSuiteStarted name='%s']\n", suiteName );
                 System.out.format( "##teamcity[testSuiteStarted name='%s']\n", escape( suiteName ) );
             }
         } catch( Throwable t ) {
