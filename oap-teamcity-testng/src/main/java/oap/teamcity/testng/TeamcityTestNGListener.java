@@ -43,7 +43,7 @@ public class TeamcityTestNGListener implements IResultListener, ISuiteListener {
 
     @Override
     public void onStart( ISuite suite ) {
-        System.out.println( suite.getAllInvokedMethods().stream().map(m -> m.getTestMethod().getRealClass().getName() ).toList() );
+        System.out.println( suite.getAllInvokedMethods().stream().map( m -> m.getTestMethod().getRealClass().getName() ).toList() );
         Teamcity.testSuiteStarted( suite.getName() );
     }
 
