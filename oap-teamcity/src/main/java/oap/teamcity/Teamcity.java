@@ -154,6 +154,18 @@ public class Teamcity {
         testFinished( testName, durationMs );
     }
 
+    public static void testSuiteStarted( String suiteName ) {
+        if( isTeamcity() ) {
+            System.out.format( "##teamcity[testSuiteStarted name='%s']\n", escape( suiteName ) );
+        }
+    }
+
+    public static void testSuiteFinished( String suiteName ) {
+        if( isTeamcity() ) {
+            System.out.format( "##teamcity[testSuiteFinished name='%s']\n", escape( suiteName ) );
+        }
+    }
+
     public enum MessageStatus {
         NORMAL, WARNING, FAILURE, ERROR
     }

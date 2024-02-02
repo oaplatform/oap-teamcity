@@ -1,10 +1,12 @@
 package oap.teamcity.testng;
 
 import oap.teamcity.Teamcity;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestResult;
 import org.testng.internal.IResultListener;
 
-public class TeamcityTestNGListener implements IResultListener {
+public class TeamcityTestNGListener implements IResultListener, ISuiteListener {
     @Override
     public void onTestStart( ITestResult result ) {
         Teamcity.testStarted( getTestName( result ) );
@@ -37,5 +39,15 @@ public class TeamcityTestNGListener implements IResultListener {
     @Override
     public void onTestFailedWithTimeout( ITestResult result ) {
         onTestFailure( result );
+    }
+
+    @Override
+    public void onStart( ISuite suite ) {
+        Teamcity.testSuiteStarted( suite.getName() );
+    }
+
+    @Override
+    public void onFinish( ISuite suite ) {
+        Teamcity.testSuiteFinished( suite.getName() );
     }
 }
