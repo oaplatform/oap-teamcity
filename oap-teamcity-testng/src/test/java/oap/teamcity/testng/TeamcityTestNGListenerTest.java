@@ -10,5 +10,4 @@ public class TeamcityTestNGListenerTest {
         assertEquals( TeamcityTestNGListener.getSuiteNameFromOutputDirectory( "C:\\workspace\\projects\\oap\\oap-stdlib-test\\target\\surefire-reports\\Surefire suite" ), "oap-stdlib-test" );
         assertEquals( TeamcityTestNGListener.getSuiteNameFromOutputDirectory( "/workspace/projects/oap/oap-stdlib-test/target/surefire-reports/Surefire suite" ), "oap-stdlib-test" );
     }
-
 }
