@@ -10,7 +10,13 @@ public class TeamcityTestNGListener implements IResultListener, ISuiteListener {
     static String getSuiteNameFromOutputDirectory( String outputDirectory ) {
         var items = outputDirectory.split( "\\\\|/" );
 
-        return items[items.length - 4];
+        int index = 4;
+
+        if( "testng-native-results".equals( items[items.length - 2] ) ) {
+            index = 5;
+        }
+
+        return items[items.length - index];
     }
 
     @Override
