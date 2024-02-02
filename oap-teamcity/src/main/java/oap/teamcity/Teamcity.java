@@ -30,7 +30,7 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class Teamcity {
-    public final static String FLOW_ID = String.valueOf( System.currentTimeMillis() ) + new Random().nextInt();
+    public static final String FLOW_ID = String.valueOf( System.currentTimeMillis() ) + new Random().nextInt();
 
     public static String escape( String value ) {
         StringBuilder sb = new StringBuilder();
