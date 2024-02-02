@@ -26,9 +26,12 @@ package oap.teamcity;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
 
+import java.util.Random;
 import java.util.function.Supplier;
 
 public class Teamcity {
+    public final static String FLOW_ID = String.valueOf( System.currentTimeMillis() ) + new Random().nextInt();
+
     public static String escape( String value ) {
         StringBuilder sb = new StringBuilder();
 
@@ -64,7 +67,8 @@ public class Teamcity {
         Preconditions.checkArgument( status == MessageStatus.ERROR );
 
         if( isTeamcity() )
-            System.out.format( "##teamcity[message text='%s' errorDetails='%s' status='%s']\n",
+            System.out.format( "##teamcity[message flowId='%s' text='%s' errorDetails='%s' status='%s']\n",
+                FLOW_ID,
                 escape( text ),
                 escape( errorDetails ),
                 status.name() );
@@ -74,14 +78,16 @@ public class Teamcity {
         Preconditions.checkArgument( status != MessageStatus.ERROR );
 
         if( isTeamcity() )
-            System.out.format( "##teamcity[message text='%s' status='%s']\n",
+            System.out.format( "##teamcity[message flowId='%s' text='%s' status='%s']\n",
+                FLOW_ID,
                 escape( text ),
                 status.name() );
     }
 
     public static void statistics( String name, Object value ) {
         if( isTeamcity() )
-            System.out.format( "##teamcity[buildStatisticValue key='%s' value='%s']\n",
+            System.out.format( "##teamcity[buildStatisticValue flowId='%s' key='%s' value='%s']\n",
+                FLOW_ID,
                 escape( name ),
                 value );
     }
@@ -97,7 +103,9 @@ public class Teamcity {
 
     private static void progressStart( String message ) {
         if( isTeamcity() )
-            System.out.format( "##teamcity[progressStart '%s']\n", escape( message ) );
+            System.out.format( "##teamcity[progressStart '%s' flowId='%s']\n",
+                FLOW_ID,
+                escape( message ) );
     }
 
     private static boolean isTeamcity() {
@@ -106,7 +114,9 @@ public class Teamcity {
 
     private static void progressEnd( String message ) {
         if( isTeamcity() )
-            System.out.format( "##teamcity[progressFinish '%s']\n", escape( message ) );
+            System.out.format( "##teamcity[progressFinish '%s' flowId='%s']\n",
+                FLOW_ID,
+                escape( message ) );
     }
 
     public static void performance( String name, double rate ) {
@@ -129,25 +139,32 @@ public class Teamcity {
 
     public static void testStarted( String testName ) {
         if( isTeamcity() ) {
-            System.out.format( "##teamcity[testStarted name='%s' captureStandardOutput='true']\n", escape( testName ) );
+            System.out.format( "##teamcity[testStarted flowId='%s' name='%s' captureStandardOutput='true']\n",
+                FLOW_ID,
+                escape( testName ) );
         }
     }
 
     public static void testFinished( String testName, long durationMs ) {
         if( isTeamcity() ) {
-            System.out.format( "##teamcity[testFinished name='%s' duration='%s']\n", escape( testName ), durationMs );
+            System.out.format( "##teamcity[testFinished flowId='%s' name='%s' duration='%s']\n",
+                FLOW_ID,
+                escape( testName ), durationMs );
         }
     }
 
     public static void testIgnored( String testName, String reason ) {
         if( isTeamcity() ) {
-            System.out.format( "##teamcity[testIgnored name='%s' message='%s']\n", escape( testName ), escape( reason ) );
+            System.out.format( "##teamcity[testIgnored flowId='%s' name='%s' message='%s']\n",
+                FLOW_ID,
+                escape( testName ), escape( reason ) );
         }
     }
 
     public static void testFailed( String testName, Throwable throwable, long durationMs ) {
         if( isTeamcity() ) {
-            System.out.format( "##teamcity[testFailed name='%s' message='%s' details='%s']\n",
+            System.out.format( "##teamcity[testFailed flowId='%s' name='%s' message='%s' details='%s']\n",
+                FLOW_ID,
                 escape( testName ), escape( throwable.getMessage() ),
                 escape( Throwables.getStackTraceAsString( throwable ) ) );
         }
@@ -157,7 +174,9 @@ public class Teamcity {
     public static void testSuiteStarted( String suiteName ) {
         try {
             if( isTeamcity() ) {
-                System.out.format( "##teamcity[testSuiteStarted name='%s']\n", escape( suiteName ) );
+                System.out.format( "##teamcity[testSuiteStarted flowId='%s' name='%s']\n",
+                    FLOW_ID,
+                    escape( suiteName ) );
             }
         } catch( Throwable t ) {
             t.printStackTrace();
@@ -168,7 +187,9 @@ public class Teamcity {
 
     public static void testSuiteFinished( String suiteName ) {
         if( isTeamcity() ) {
-            System.out.format( "##teamcity[testSuiteFinished name='%s']\n", escape( suiteName ) );
+            System.out.format( "##teamcity[testSuiteFinished flowId='%s' name='%s']\n",
+                FLOW_ID,
+                escape( suiteName ) );
         }
     }
 
