@@ -48,13 +48,13 @@ public class TeamcityTestNGListener implements IResultListener {
 
     @Override
     public void onStart( ITestContext context ) {
-        System.out.println( "context onStart: '" + context.getOutputDirectory() + "'");
+        System.out.println( "context onStart: '" + context.getOutputDirectory() + "'" );
         Teamcity.testSuiteStarted( getSuiteNameFromOutputDirectory( context.getOutputDirectory() ) );
     }
 
     @Override
     public void onFinish( ITestContext context ) {
-        System.out.println( "context onFinish: '" + context.getOutputDirectory() + "'");
+        System.out.println( "context onFinish: '" + context.getOutputDirectory() + "'" );
         Teamcity.testSuiteFinished( getSuiteNameFromOutputDirectory( context.getOutputDirectory() ) );
     }
 }
