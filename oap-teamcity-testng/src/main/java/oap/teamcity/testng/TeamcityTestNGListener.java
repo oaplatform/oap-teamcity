@@ -26,6 +26,16 @@ public class TeamcityTestNGListener implements IResultListener {
     }
 
     private String getTestName( ITestResult result ) {
-        return result.getTestClass().getRealClass().getSimpleName() + "." + result.getName();
+        return result.getTestClass().getRealClass().getName() + "." + result.getName();
+    }
+
+    @Override
+    public void onTestFailedButWithinSuccessPercentage( ITestResult result ) {
+        onTestFailure( result );
+    }
+
+    @Override
+    public void onTestFailedWithTimeout( ITestResult result ) {
+        onTestFailure( result );
     }
 }
