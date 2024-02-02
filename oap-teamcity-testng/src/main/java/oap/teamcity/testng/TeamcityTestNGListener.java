@@ -1,11 +1,12 @@
 package oap.teamcity.testng;
 
 import oap.teamcity.Teamcity;
-import org.testng.ITestContext;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestResult;
 import org.testng.internal.IResultListener;
 
-public class TeamcityTestNGListener implements IResultListener {
+public class TeamcityTestNGListener implements IResultListener, ISuiteListener {
     static String getSuiteNameFromOutputDirectory( String outputDirectory ) {
         var items = outputDirectory.split( "\\\\|/" );
 
@@ -47,14 +48,14 @@ public class TeamcityTestNGListener implements IResultListener {
     }
 
     @Override
-    public void onStart( ITestContext context ) {
-        System.out.println( "context onStart: '" + context.getOutputDirectory() + "'" );
-        Teamcity.testSuiteStarted( getSuiteNameFromOutputDirectory( context.getOutputDirectory() ) );
+    public void onStart( ISuite suite ) {
+        System.out.println( "context onStart: '" + suite.getOutputDirectory() + "'" );
+        Teamcity.testSuiteStarted( getSuiteNameFromOutputDirectory( suite.getOutputDirectory() ) );
     }
 
     @Override
-    public void onFinish( ITestContext context ) {
-        System.out.println( "context onFinish: '" + context.getOutputDirectory() + "'" );
-        Teamcity.testSuiteFinished( getSuiteNameFromOutputDirectory( context.getOutputDirectory() ) );
+    public void onFinish( ISuite suite ) {
+        System.out.println( "context onFinish: '" + suite.getOutputDirectory() + "'" );
+        Teamcity.testSuiteFinished( getSuiteNameFromOutputDirectory( suite.getOutputDirectory() ) );
     }
 }
