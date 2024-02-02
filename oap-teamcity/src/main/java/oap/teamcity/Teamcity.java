@@ -172,16 +172,10 @@ public class Teamcity {
     }
 
     public static void testSuiteStarted( String suiteName ) {
-        try {
-            if( isTeamcity() ) {
-                System.out.format( "##teamcity[testSuiteStarted flowId='%s' name='%s']\n",
-                    FLOW_ID,
-                    escape( suiteName ) );
-            }
-        } catch( Throwable t ) {
-            t.printStackTrace();
-            System.out.println( "name: " + suiteName );
-            throw new RuntimeException( t );
+        if( isTeamcity() ) {
+            System.out.format( "##teamcity[testSuiteStarted flowId='%s' name='%s']\n",
+                FLOW_ID,
+                escape( suiteName ) );
         }
     }
 
