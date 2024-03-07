@@ -13,13 +13,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-@Mojo( name = "report", threadSafe = true, defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST )
+@Mojo( name = "folder-size", threadSafe = true, defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST )
 public class FolderSizeMojo extends AbstractMojo {
     @Parameter( required = true )
     public String directory;
 
-    @Parameter( required = true )
-    public String name;
+    @Parameter( alias = "statistic-name", required = true )
+    public String statisticName;
 
     @Override
     public void execute() throws MojoExecutionException {
@@ -31,7 +31,7 @@ public class FolderSizeMojo extends AbstractMojo {
                     .mapToLong( p -> p.toFile().length() )
                     .sum();
 
-                Teamcity.statistics( "directory_size_" + name, size );
+                Teamcity.statistics( statisticName, size );
             }
 
         } catch( IOException e ) {
