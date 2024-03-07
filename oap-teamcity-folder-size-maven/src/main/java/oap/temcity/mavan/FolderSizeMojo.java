@@ -24,12 +24,19 @@ public class FolderSizeMojo extends AbstractMojo {
     @Override
     public void execute() throws MojoExecutionException {
         try {
+            getLog().info( "statisticName " + statisticName + " directory " + directory );
             Path folder = Paths.get( directory );
             try( Stream<Path> stream = Files.walk( folder ) ) {
                 long size = stream
                     .filter( p -> p.toFile().isFile() )
-                    .mapToLong( p -> p.toFile().length() )
+                    .mapToLong( p -> {
+                        getLog().debug( "file " + p + " size " + p.toFile().length() );
+
+                        return p.toFile().length();
+                    } )
                     .sum();
+
+                getLog().info( "statisticName " + statisticName + " directory " + directory + " size " + size );
 
                 Teamcity.statistics( statisticName, size );
             }
