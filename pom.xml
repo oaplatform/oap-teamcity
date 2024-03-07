@@ -13,6 +13,7 @@
     <modules>
         <module>oap-teamcity</module>
         <module>oap-teamcity-testng</module>
+        <module>oap-teamcity-folder-size-maven</module>
     </modules>
 
     <repositories>
@@ -23,14 +24,14 @@
     </repositories>
 
     <properties>
-        <oap-teamcity.project.version>21.0.1</oap-teamcity.project.version>
+        <oap-teamcity.project.version>21.0.2</oap-teamcity.project.version>
 
         <maven.compiler.release>21</maven.compiler.release>
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <oap.deps.guava.version>3.0.3</oap.deps.guava.version>
+        <oap.deps.guava.version>32.0.0-jre</oap.deps.guava.version>
         <oap.deps.testng.version>7.9.0</oap.deps.testng.version>
         <oap.deps.lombok.version>1.18.30</oap.deps.lombok.version>
 
@@ -41,6 +42,9 @@
         <oap.deps.checkstyle.version>10.3.3</oap.deps.checkstyle.version>
         <oap.deps.maven.source.version>3.2.1</oap.deps.maven.source.version>
         <oap.deps.maven.surefire.version>3.0.0-M7</oap.deps.maven.surefire.version>
+
+        <oap.deps.mavem-plugin-api.version>3.9.6</oap.deps.mavem-plugin-api.version>
+        <oap.deps.mavem-plugin-annotations.version>3.11.0</oap.deps.mavem-plugin-annotations.version>
     </properties>
 
     <build>

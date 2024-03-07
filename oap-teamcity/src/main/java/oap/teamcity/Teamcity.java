@@ -84,7 +84,7 @@ public class Teamcity {
                 status.name() );
     }
 
-    public static void statistics( String name, Object value ) {
+    public static void statistics( String name, Number value ) {
         if( isTeamcity() )
             System.out.format( "##teamcity[buildStatisticValue flowId='%s' key='%s' value='%s']\n",
                 FLOW_ID,

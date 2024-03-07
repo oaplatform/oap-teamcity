@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>oap-teamcity-folder-size-maven</name>
+    <artifactId>oap-teamcity-folder-size-maven</artifactId>
+    <packaging>maven-plugin</packaging>
+
+    <parent>
+        <groupId>oap</groupId>
+        <artifactId>oap-teamcity-parent</artifactId>
+        <version>${oap-teamcity.project.version}</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>oap</groupId>
+            <artifactId>oap-teamcity</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${oap.deps.mavem-plugin-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>${oap.deps.mavem-plugin-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
