@@ -14,8 +14,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.github.itning</groupId>
-            <artifactId>guava-retrying3</artifactId>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
             <version>${oap.deps.guava.version}</version>
         </dependency>
 
