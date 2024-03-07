@@ -45,9 +45,20 @@
 
         <oap.deps.mavem-plugin-api.version>3.9.6</oap.deps.mavem-plugin-api.version>
         <oap.deps.mavem-plugin-annotations.version>3.11.0</oap.deps.mavem-plugin-annotations.version>
+        <oap.deps.maven-plugin-plugin.version>3.11.0</oap.deps.maven-plugin-plugin.version>
     </properties>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>${oap.deps.maven-plugin-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -118,7 +129,8 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${oap.deps.maven.checkstyle.version}</version>
                 <configuration>
-                    <configLocation>https://raw.githubusercontent.com/oaplatform/oap-maven/master/.idea/checkstyle.xml</configLocation>
+                    <configLocation>https://raw.githubusercontent.com/oaplatform/oap-maven/master/.idea/checkstyle.xml
+                    </configLocation>
                     <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>

@@ -13,7 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-@Mojo( name = "report", defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST )
+@Mojo( name = "report", threadSafe = true, defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST )
 public class FolderSizeMojo extends AbstractMojo {
     @Parameter( required = true )
     public String directory;
