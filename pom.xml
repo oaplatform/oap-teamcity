@@ -19,12 +19,19 @@
     <repositories>
         <repository>
             <id>oap</id>
-            <url>https://artifacts.oaplatform.org/repository/maven/</url>
+            <url>https://artifacts.oaplatform.org/repository/oap-maven/</url>
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>oap</id>
+            <url>https://artifacts.oaplatform.org/repository/oap-maven/</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
-        <oap-teamcity.project.version>21.0.2</oap-teamcity.project.version>
+        <oap-teamcity.project.version>21.0.3</oap-teamcity.project.version>
 
         <maven.compiler.release>21</maven.compiler.release>
         <encoding>UTF-8</encoding>
