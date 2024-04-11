@@ -1,0 +1,7 @@
+/dep.bat
+/dep.log
+/plugin.bat
+/plugin.log
+**/*.iml
+**/.flattened-pom.xml
+**/.surefire-*
