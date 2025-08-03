@@ -48,7 +48,7 @@
 
         <oap.deps.maven.flatten.version>1.6.0</oap.deps.maven.flatten.version>
         <oap.deps.maven.jar.version>3.3.0</oap.deps.maven.jar.version>
-        <oap.deps.maven.compiler.version>3.13.0</oap.deps.maven.compiler.version>
+        <oap.deps.maven.compiler.version>3.14.0</oap.deps.maven.compiler.version>
         <oap.deps.maven.checkstyle.version>3.3.1</oap.deps.maven.checkstyle.version>
         <oap.deps.checkstyle.version>10.24.0</oap.deps.checkstyle.version>
         <oap.deps.maven.source.version>3.3.1</oap.deps.maven.source.version>
@@ -79,6 +79,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${oap.deps.maven.compiler.version}</version>
                 <configuration>
+                    <source>24</source>
+                    <target>24</target>
                     <useIncrementalCompilation>true</useIncrementalCompilation>
                     <compilerArgs>
                         <arg>-parameters</arg>
