@@ -35,9 +35,9 @@
     </distributionManagement>
 
     <properties>
-        <oap-teamcity.project.version>22.0.0</oap-teamcity.project.version>
+        <oap-teamcity.project.version>24.0.0</oap-teamcity.project.version>
 
-        <maven.compiler.release>22</maven.compiler.release>
+        <maven.compiler.release>24</maven.compiler.release>
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
