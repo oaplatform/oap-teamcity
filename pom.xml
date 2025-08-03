@@ -35,9 +35,9 @@
     </distributionManagement>
 
     <properties>
-        <oap-teamcity.project.version>22.0.0</oap-teamcity.project.version>
+        <oap-teamcity.project.version>24.0.0</oap-teamcity.project.version>
 
-        <maven.compiler.release>22</maven.compiler.release>
+        <maven.compiler.release>24</maven.compiler.release>
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -48,15 +48,15 @@
 
         <oap.deps.maven.flatten.version>1.6.0</oap.deps.maven.flatten.version>
         <oap.deps.maven.jar.version>3.3.0</oap.deps.maven.jar.version>
-        <oap.deps.maven.compiler.version>3.13.0</oap.deps.maven.compiler.version>
+        <oap.deps.maven.compiler.version>3.14.0</oap.deps.maven.compiler.version>
         <oap.deps.maven.checkstyle.version>3.3.1</oap.deps.maven.checkstyle.version>
-        <oap.deps.checkstyle.version>10.15.0</oap.deps.checkstyle.version>
+        <oap.deps.checkstyle.version>10.24.0</oap.deps.checkstyle.version>
         <oap.deps.maven.source.version>3.3.1</oap.deps.maven.source.version>
         <oap.deps.maven.surefire.version>3.2.5</oap.deps.maven.surefire.version>
 
-        <oap.deps.mavem-plugin-api.version>3.9.6</oap.deps.mavem-plugin-api.version>
-        <oap.deps.mavem-plugin-annotations.version>3.12.0</oap.deps.mavem-plugin-annotations.version>
-        <oap.deps.maven-plugin-plugin.version>3.12.0</oap.deps.maven-plugin-plugin.version>
+        <oap.deps.mavem-plugin-api.version>3.9.11</oap.deps.mavem-plugin-api.version>
+        <oap.deps.mavem-plugin-annotations.version>3.15.1</oap.deps.mavem-plugin-annotations.version>
+        <oap.deps.maven-plugin-plugin.version>3.15.1</oap.deps.maven-plugin-plugin.version>
     </properties>
 
     <build>
@@ -79,6 +79,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${oap.deps.maven.compiler.version}</version>
                 <configuration>
+                    <source>24</source>
+                    <target>24</target>
                     <useIncrementalCompilation>true</useIncrementalCompilation>
                     <compilerArgs>
                         <arg>-parameters</arg>
@@ -174,7 +176,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.5.3</version>
 
                 <configuration>
                     <argLine>
