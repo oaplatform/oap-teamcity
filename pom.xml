@@ -35,9 +35,9 @@
     </distributionManagement>
 
     <properties>
-        <oap-teamcity.project.version>24.0.0</oap-teamcity.project.version>
+        <oap-teamcity.project.version>25.0.0</oap-teamcity.project.version>
 
-        <maven.compiler.release>24</maven.compiler.release>
+        <maven.compiler.release>25</maven.compiler.release>
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -79,8 +79,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${oap.deps.maven.compiler.version}</version>
                 <configuration>
-                    <source>24</source>
-                    <target>24</target>
+                    <source>25</source>
+                    <target>25</target>
                     <useIncrementalCompilation>true</useIncrementalCompilation>
                     <compilerArgs>
                         <arg>-parameters</arg>
