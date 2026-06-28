@@ -63,7 +63,8 @@ subprojects {
             maven {
                 url = uri(project.findProperty("altRepositoryUri") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
                 var oapUsername = project.findProperty("oap.repository.user") as String?
-                var oapPassword = project.findProperty("oap.repository.password") as String?
+                var oapPassword = project.findProperty("oap.repository.password") as String? ?: System.getenv("CODEARTIFACT_AUTH_TOKEN")
+
 
                 if (oapUsername != null && oapPassword != null)
                     credentials {
