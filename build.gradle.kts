@@ -1,7 +1,7 @@
 allprojects {
     repositories {
         maven {
-            url = uri(project.findProperty("altRepository") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
+            url = uri(project.findProperty("altRepositoryUri") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
         }
         mavenCentral()
     }
@@ -59,7 +59,7 @@ subprojects {
         }
         repositories {
             maven {
-                url = uri(project.findProperty("altRepository") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
+                url = uri(project.findProperty("altRepositoryUri") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
                 credentials {
                     username = project.findProperty("oap.repository.user") as String?
                         ?: System.getenv("OAP_REPOSITORY_USER")
