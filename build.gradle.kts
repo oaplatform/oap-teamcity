@@ -20,11 +20,13 @@ subprojects {
     }
 
     tasks.withType<JavaCompile>().configureEach {
-        options.compilerArgs.addAll(listOf(
-            "-parameters",
-            "-Xlint:unchecked",
-            "--add-modules", "java.xml,java.compiler"
-        ))
+        options.compilerArgs.addAll(
+            listOf(
+                "-parameters",
+                "-Xlint:unchecked",
+                "--add-modules", "java.xml,java.compiler"
+            )
+        )
     }
 
     configure<CheckstyleExtension> {
@@ -60,12 +62,14 @@ subprojects {
         repositories {
             maven {
                 url = uri(project.findProperty("altRepositoryUri") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
-                credentials {
-                    username = project.findProperty("oap.repository.user") as String?
-                        ?: System.getenv("OAP_REPOSITORY_USER")
-                    password = project.findProperty("oap.repository.password") as String?
-                        ?: System.getenv("OAP_REPOSITORY_PASSWORD")
-                }
+                var oapUsername = project.findProperty("oap.repository.user") as String?
+                var oapPassword = project.findProperty("oap.repository.password") as String?
+
+                if (oapUsername != null && oapPassword != null)
+                    credentials {
+                        username = oapUsername
+                        password = oapPassword
+                    }
             }
         }
     }
