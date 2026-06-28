@@ -1,6 +1,8 @@
 allprojects {
     repositories {
-        maven { url = uri("https://artifacts.oaplatform.org/repository/oap-maven/") }
+        maven {
+            url = uri(project.findProperty("altRepository") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
+        }
         mavenCentral()
     }
 }
@@ -25,7 +27,7 @@ subprojects {
         ))
     }
 
-    configure<org.gradle.api.plugins.quality.CheckstyleExtension> {
+    configure<CheckstyleExtension> {
         toolVersion = "10.24.0"
         config = resources.text.fromUri("https://raw.githubusercontent.com/oaplatform/oap-maven/master/.idea/checkstyle.xml")
     }
@@ -57,7 +59,7 @@ subprojects {
         }
         repositories {
             maven {
-                url = uri("https://artifacts.oaplatform.org/repository/oap-maven/")
+                url = uri(project.findProperty("altRepository") ?: "https://artifacts.oaplatform.org/repository/oap-maven/")
                 credentials {
                     username = project.findProperty("oap.repository.user") as String?
                         ?: System.getenv("OAP_REPOSITORY_USER")
