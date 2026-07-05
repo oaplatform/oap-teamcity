@@ -1,3 +1,0 @@
-dependencies {
-    implementation("com.google.guava:guava:33.1.0-jre")
-}
